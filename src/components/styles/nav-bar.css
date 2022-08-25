@@ -1,0 +1,26 @@
+.nav-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+}
+.nav-links:hover {
+    color: black;
+}
+
+.cart-svg {
+    display: flex;
+    background-color: white;
+    border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-svg:hover {
+    transform: scale(1.1);
+    color: black;
+}

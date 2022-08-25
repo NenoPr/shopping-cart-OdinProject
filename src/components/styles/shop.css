@@ -1,0 +1,22 @@
+
+
+.shop-content {
+    display: grid;
+    grid-template: auto 1fr / 1fr 8fr;
+    gap: 10%;
+}
+
+.shop-header {
+    grid-area: 1 / 1 / 1 / 3;
+}
+
+.shop-sidebar {
+    grid-area: 2 / 1 / 2 / 1;
+}
+
+.shop-articles {
+    grid-area: 2 / 2 / 2 / 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10%;
+}

@@ -1,0 +1,7 @@
+
+.about-content {
+    margin-top: 5%;
+    display: grid;
+    flex-direction: column;
+    gap: 50%;
+}
