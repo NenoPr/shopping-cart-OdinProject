@@ -1,5 +1,8 @@
 import "./styles/home.css";
 const Home = () => {
+
+  
+
   return (
     <div className="home">
         <div>Welcome to Genshin Shop!</div>

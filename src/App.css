@@ -1,6 +1,33 @@
+body::-webkit-scrollbar {
+  display: block;
+}
+
+html {
+  overflow-y: scroll;
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #696a7d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #15233c;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(157, 175, 200);
+}
+
 .App {
   display: grid;
-  grid-template: 2fr 14fr auto / 1fr;
+  grid-template: auto 14fr auto / 1fr;
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -16,8 +43,9 @@
 
 .app-nav-bar {
   grid-area: 1 / 1 / 1 / 1;
-  border-bottom: .1rem solid white;
+  border-bottom: 0.1rem solid white;
   height: 100%;
+  padding: 2rem;
 }
 
 .app-content-container {
@@ -28,5 +56,5 @@
 
 .app-footer {
   grid-area: 3 / 1 / 3 / 1;
-  border-top: .1rem solid white;
+  border-top: 0.1rem solid white;
 }
