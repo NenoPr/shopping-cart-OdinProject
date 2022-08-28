@@ -104,23 +104,27 @@ const Shop = (appProps) => {
     if (presentArticle) {
       let newState = appProps.items.cart.map((obj) => {
         console.log("obj.id", obj.id);
-        try {
           if (obj.id === e.target.id) {
             let newAmount = obj.amount + 1;
             return { ...obj, amount: newAmount };
           } else return obj;
-        } catch (error) {
-          console.log("Error", error);
-        }
       });
       appProps.items.setCart(newState);
       return;
       // if it is not present add it to the cart object
     } else {
       const newState = [...appProps.items.cart];
+      // Object.keys(AllProducts).map((obj) => {
+      //     if (AllProducts[obj].id === e.target.id) {
+      //       let new
+      //     }
+      // });
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",e)
       newState.push({
         productName: e.target.getAttribute("name"),
         amount: 1,
+        price: e.target.previousElementSibling.innerText.slice(0,-1),
+        location: e.target.parentElement.firstElementChild.firstElementChild.attributes.src.nodeValue,
         id: e.target.id,
       });
       appProps.items.setCart(newState);
@@ -198,7 +202,7 @@ const Shop = (appProps) => {
       <div className="shop-articles">
         {/* {
         <div className="shop-article" key={uniqid()}>
-          <img src={AllProducts.posters[1].productLocationUrl} alt="placeholder" />
+          <img className="shop-img" src={process.env.PUBLIC_URL + "/" + AllProducts.posters[1].productLocationUrl} alt="placeholder" />
           <div className="product-name-holder">
             {AllProducts.posters[0].productName}
           </div>
@@ -221,7 +225,15 @@ const Shop = (appProps) => {
             ? products[categories].map((article) => (
                 <div className="shop-article" key={uniqid()}>
                   <Link to={`/shop/${categories}/${article.productName}`}>
-                    <img src={article.productLocationUrl} alt="placeholder" />
+                    <img
+                      className="shop-img"
+                      src={
+                        process.env.PUBLIC_URL +
+                        "/" +
+                        article.productLocationUrl
+                      }
+                      alt="placeholder"
+                    />
                     <div className="product-name-holder">
                       {article.productName}
                     </div>
@@ -240,13 +252,21 @@ const Shop = (appProps) => {
                   </div>
                 </div>
               ))
-              
-            : Object.keys(categoryRender).map((categories) =>
+            : // Render all Items
+              Object.keys(categoryRender).map((categories) =>
                 categoryRender[categories]
                   ? products[categories].map((article) => (
                       <div className="shop-article" key={uniqid()}>
                         <Link to={`/shop/${categories}/${article.productName}`}>
-                          <img src={article.productLocationUrl} alt="placeholder" />
+                          <img
+                            className="shop-img"
+                            src={
+                              process.env.PUBLIC_URL +
+                              "/" +
+                              article.productLocationUrl
+                            }
+                            alt="placeholder"
+                          />
                           <div className="product-name-holder">
                             {article.productName}
                           </div>

@@ -44,10 +44,10 @@
     justify-content: center;
 }
 
-img {
+.shop-img {
     
     width: 100%;
-    max-height: 40vh;
+    height: 40vh;
     object-fit: cover;
     object-position: 0% 20%;
     border-top-left-radius: .5rem;

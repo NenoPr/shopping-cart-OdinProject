@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
@@ -16,10 +17,10 @@ const App = () => {
   const [lastLocation, setLastLocation] = useState("")
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <div className="app-nav-bar">
-          <NavBar props={cart}/>
+        <NavBar props={{cart, setCart}} />
         </div>
         <div className="app-content-container">
           <Routes>
@@ -27,12 +28,12 @@ const App = () => {
             <Route path={"/about"} element={<About />} />
             <Route path={"/shop"} element={<Shop items={{products, cart, setCart, setLastLocation}} />} />
             <Route path={`/shop/:categories`} element={<Shop items={{products, cart, setCart, setLastLocation}} />} />
-            <Route path={`/shop/:categories/:product`} element={<ShopProductDetails props={lastLocation}/>} />
+            <Route path={`/shop/:categories/:product`} element={<ShopProductDetails props={{lastLocation, cart, setCart}}/>} />
           </Routes>
         </div>
         <footer className="app-footer">Footer Content</footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
