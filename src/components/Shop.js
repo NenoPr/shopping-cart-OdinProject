@@ -1,29 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import uniqid from "uniqid";
 import "./styles/shop.css";
-import imageGirl from "../images/Night Girl Night  City Night Sky Universe.jpg";
 import AllProducts from "./ProductsData";
 
 const Shop = (appProps) => {
-  const [categoryRender, setCategoryRender] = useState({
-    posters: true,
-    figures: true,
-    mousePads: true,
-    clothes: true,
-    stickers: true,
-  });
   console.log("App Props for Shop", appProps);
-  const [products, setProducts] = useState(appProps.items.products);
-  console.log("Products", products);
   const { categories } = useParams();
-  console.log("ProduseParamsuseParamsuseParamsuseParamsucts", categories);
-  // const [cart, setCart] = useState(appProps.items.cart);
+  console.log("Currently Browsing Category", categories);
 
   useEffect(() => {
-    console.log("Rerender");
+    console.log("Shop Module Rerender");
     // sets css class on selected category
     document
       .querySelector(".sidebar-selected-category")
@@ -39,106 +27,63 @@ const Shop = (appProps) => {
         .classList.add("sidebar-selected-category");
       appProps.items.setLastLocation("allItems");
     }
-  }, [categoryRender]);
+  }, [categories, appProps.items.lastLocation]);
 
-  // Set the displayed categories
+  // Gives class to element on the DOM to show current category selection
   const updateCategoryRender = (e) => {
-    console.log("---------------------");
-    console.log(
-      "appPropsappPropsappPropsappPropsappPropsappPropsappProps",
-      appProps.items.setLastLocation
-    );
-    // set every category to true if all items is selected
-    let category = e.target.getAttribute("category");
-    if (category === "allItems") {
-      let newCategoryRender = categoryRender;
-      newCategoryRender = Object.keys(newCategoryRender).reduce((result, k) => {
-        return { ...result, [k]: true };
-      }, {});
-
-      setCategoryRender(newCategoryRender);
-      // console.log("categoryRender", categoryRender);
-      // gives selected class to target element
-      document
-        .querySelector(".sidebar-selected-category")
-        .classList.remove("sidebar-selected-category");
-      e.target.classList.add("sidebar-selected-category");
-      return;
-    }
-    // set only the selected category to render
-    let newCategoryRender = categoryRender;
-    newCategoryRender = Object.keys(newCategoryRender) // Get list of keys in model
-      .reduce((result, k) => {
-        return { ...result, [k]: category === k };
-      }, {});
-    // console.log("newCategoryRender", newCategoryRender);
-    setCategoryRender({ ...newCategoryRender });
-    console.log("categoryRender", categoryRender);
-
     // gives selected class to target element
     document
       .querySelector(".sidebar-selected-category")
       .classList.remove("sidebar-selected-category");
     e.target.classList.add("sidebar-selected-category");
   };
-  // console.log("Products Imported", products.items);
-  // console.log("Cart Imported", products.cart);
 
   // Add items to cart
   function addToCart(e) {
     let newCartArticleName = e.target.getAttribute("name");
     let presentArticle = false;
-    console.log("CART:", appProps.items.cart);
     // Check if the selected article is already present in the cart
     appProps.items.cart.map((obj) => {
-      console.log("CARRRTTTTT", obj);
-      // try {
       if (obj.productName === newCartArticleName) {
         presentArticle = true;
       }
-      // } catch (error) {
-      //   console.log("Error", error);
-      // }
     });
     // If the article is present in cart update the object by 1 amount
     if (presentArticle) {
       let newState = appProps.items.cart.map((obj) => {
-        console.log("obj.id", obj.id);
-          if (obj.id === e.target.id) {
-            let newAmount = obj.amount + 1;
-            return { ...obj, amount: newAmount };
-          } else return obj;
+        if (obj.id === e.target.id) {
+          let newAmount = obj.amount + 1;
+          return { ...obj, amount: newAmount };
+        } else return obj;
       });
       appProps.items.setCart(newState);
+      console.log("Current Cart", appProps.items.cart);
       return;
       // if it is not present add it to the cart object
     } else {
+      let selectedProductObject = {};
       const newState = [...appProps.items.cart];
-      // Object.keys(AllProducts).map((obj) => {
-      //     if (AllProducts[obj].id === e.target.id) {
-      //       let new
-      //     }
-      // });
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",e)
+      Object.keys(AllProducts).map((categories) => {
+        AllProducts[categories].map((obj) => {
+          if (obj.id === e.target.id) {
+            selectedProductObject = obj;
+          }
+        });
+      });
       newState.push({
         productName: e.target.getAttribute("name"),
         amount: 1,
-        price: e.target.previousElementSibling.innerText.slice(0,-1),
-        location: e.target.parentElement.firstElementChild.firstElementChild.attributes.src.nodeValue,
+        price: selectedProductObject.productPrice,
+        location:
+          process.env.PUBLIC_URL +
+          "/" +
+          selectedProductObject.productLocationUrl,
         id: e.target.id,
       });
       appProps.items.setCart(newState);
       console.log("Current Cart", appProps.items.cart);
     }
   }
-
-  // highlights selected category
-  // function highlightLink(e) {
-  //   document
-  //     .querySelector("sidebar-selected-category")
-  //     .classList.remove("sidebar-selected-category");
-  //   e.target.classList.add("sidebar-selected-category");
-  // }
 
   return (
     <div className="shop-content">
@@ -220,11 +165,11 @@ const Shop = (appProps) => {
         </div>
       </div>} */}
         {
-          // render articles based on the selected categories in categoryRender
-          categories
-            ? products[categories].map((article) => (
+          // render articles based on the selected categories useParams value from the URL
+          categories !== undefined
+            ? AllProducts[categories].map((article) => (
                 <div className="shop-article" key={uniqid()}>
-                  <Link to={`/shop/${categories}/${article.productName}`}>
+                  <Link to={`/shop/${categories}/${article.productName}`} className="nav-links-articles">
                     <img
                       className="shop-img"
                       src={
@@ -252,42 +197,38 @@ const Shop = (appProps) => {
                   </div>
                 </div>
               ))
-            : // Render all Items
-              Object.keys(categoryRender).map((categories) =>
-                categoryRender[categories]
-                  ? products[categories].map((article) => (
-                      <div className="shop-article" key={uniqid()}>
-                        <Link to={`/shop/${categories}/${article.productName}`}>
-                          <img
-                            className="shop-img"
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/" +
-                              article.productLocationUrl
-                            }
-                            alt="placeholder"
-                          />
-                          <div className="product-name-holder">
-                            {article.productName}
-                          </div>
-                        </Link>
-                        <div className="product-type-holder">
-                          {article.productType}
-                        </div>
-                        <div className="product-price">
-                          {article.productPrice}$
-                        </div>
-                        <div
-                          className="add-to-cart"
-                          onClick={addToCart}
-                          id={article.id}
-                          name={article.productName}
-                        >
-                          Add to Cart
-                        </div>
+            : // Render all Items if categories is set to null
+              Object.keys(AllProducts).map((categories) =>
+                AllProducts[categories].map((article) => (
+                  <div className="shop-article" key={uniqid()}>
+                    <Link to={`/shop/${categories}/${article.productName}`} className="nav-links-articles">
+                      <img
+                        className="shop-img"
+                        src={
+                          process.env.PUBLIC_URL +
+                          "/" +
+                          article.productLocationUrl
+                        }
+                        alt="placeholder"
+                      />
+                      <div className="product-name-holder">
+                        {article.productName}
                       </div>
-                    ))
-                  : console.log(`Skipping ${categories}`)
+                    </Link>
+                    <div className="product-type-holder">
+                      {article.productType}
+                    </div>
+                    <div className="product-price">{article.productPrice}$</div>
+                    <div
+                      className="add-to-cart"
+                      onClick={addToCart}
+                      id={article.id}
+                      name={article.productName}
+                    >
+                      Add to Cart
+                    </div>
+                  </div>
+                ))
               )
         }
       </div>

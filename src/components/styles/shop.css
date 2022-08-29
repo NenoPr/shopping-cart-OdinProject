@@ -30,8 +30,16 @@
     color: white;
 }
 
+.sidebar-option-Link:hover {
+    color: black;
+}
+
 .sidebar-selected-category {
     border-bottom: .2rem solid white;
+}
+
+.sidebar-selected-category:hover {
+    color: white;
 }
 
 .shop-articles {
@@ -42,6 +50,11 @@
     height: fit-content;
     gap: 2rem;
     justify-content: center;
+}
+
+.nav-links-articles {
+    text-decoration: none;
+    color: black;
 }
 
 .shop-img {

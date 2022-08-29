@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div
+      class="app-nav-bar"
+    >
+      <div
+        class="nav-content"
+      >
+        <div>
+          Logo
+        </div>
+        <a
+          class="nav-links"
+          href="#/"
+        >
+          <div>
+            Home
+          </div>
+        </a>
+        <a
+          class="nav-links"
+          href="#/shop"
+        >
+          <div>
+            Shop
+          </div>
+        </a>
+        <a
+          class="nav-links"
+          href="#/about"
+        >
+          <div>
+            About
+          </div>
+        </a>
+        <div
+          class="shopping-cart-article-holder"
+        >
+          <span
+            class="shopping-cart-article-counter"
+          />
+          <div
+            class="nav-links cart-svg"
+          >
+            <svg>
+              shopping_cart.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          class="toggle-cart-display"
+          id="cart"
+        >
+          <div
+            class="shopping-cart-container"
+          >
+            <div
+              class="shopping-cart-header-container"
+            >
+              <div
+                class="shopping-cart-headline"
+              >
+                Shopping Cart
+              </div>
+              <span
+                class="close-shopping-cart"
+              >
+                Close
+              </span>
+            </div>
+            <div
+              class="shopping-cart-article-list"
+            >
+              <div>
+                Shopping Cart Empty
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="app-content-container"
+    >
+      <div
+        class="home"
+      >
+        <div>
+          Welcome to Genshin Shop!
+        </div>
+        <p>
+           We are a shop designd to give you the best experience in online shopping that the world can offer.
+        </p>
+      </div>
+    </div>
+    <footer
+      class="app-footer"
+    >
+      Footer Content
+    </footer>
+  </div>
+</DocumentFragment>
+`;

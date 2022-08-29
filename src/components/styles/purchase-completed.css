@@ -1,0 +1,25 @@
+
+
+.purchase-completed-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.purchase-completed {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.purchase-completed-thank-you {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.purchase-completed-emoji {
+    font-size: 4rem;
+    color: rgb(213, 74, 74);
+}

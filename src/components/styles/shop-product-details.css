@@ -1,6 +1,14 @@
 .product-details-back-link{
+    text-decoration: none;
+    color: white;
     position: relative;
     bottom: 20%;
+    height: fit-content;
+    width: fit-content;
+}
+
+.product-details-back-link:hover {
+    color: black;
 }
 
 .product-info {

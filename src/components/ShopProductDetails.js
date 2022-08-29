@@ -1,49 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import uniqid from "uniqid";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AllProducts from "./ProductsData";
 import "./styles/shop.css";
 import "./styles/shop-product-details.css";
 
 const ShopProductDetails = (appProps) => {
-  let { product } = useParams();
+  const { product } = useParams();
+  const { categories } = useParams();
   const [currentProduct, setCurrentProduct] = useState({});
   const [originLocation, setOriginLocation] = useState("");
   const [orderAmount, setOrderAmount] = useState(1);
+  console.log("ShopProductDetails appProps fromApp", appProps);
 
   useEffect(() => {
-    Object.keys(AllProducts).map((key) => {
-      AllProducts[key].map((article) => {
-        if (article.productName === product) {
-          console.log("article", article);
-          const arr = article;
-          setCurrentProduct(arr);
-        }
-      });
+    // Find selected product from categories useParams and product useParams for name to find specific product
+    AllProducts[categories].map((article) => {
+      if (article.productName === product) {
+        console.log("article", article);
+        const obj = article;
+        setCurrentProduct(obj);
+      }
     });
-    // console.log("currentProduct", currentProduct);
-    // console.log("productproductproduct",product)
-    // console.log("appPropsappPropsappPropsappPropsappProps",appProps.props)
+
+    // Set origin Location so clicking back button leads to previous /shop/:category instead of /shop
     if (appProps.props.lastLocation === "allItems") {
       setOriginLocation("/shop");
     } else {
-      setOriginLocation(`/shop/${appProps.props}`);
+      setOriginLocation(`/shop/${appProps.props.lastLocation}`);
     }
-    let pathLocation = `${appProps.props.lastLocation}/${product}`;
-    // console.log("pathLocationpathLocationpathLocationpathLocationpathLocation",pathLocation)
-    // pathLocation = pathLocation.replace(product.replace(" ","%20"),"").slice(0,-1)
-    // console.log("productproductproduct",pathLocation)
-  }, [appProps, product]);
+  }, [appProps.props.lastLocation, product, categories]);
 
   useEffect(() => {
     console.log("Rerendered");
   }, [orderAmount]);
 
-  function handleAddToCart(e) {
+  function handleAddToCart() {
     let presentArticle = false;
+    // Check if the article is present in the cart
     appProps.props.cart.map((obj) => {
-      console.log("CARRRTTTTT", obj);
       if (obj.id === currentProduct.id) {
         presentArticle = true;
       }
@@ -51,12 +46,12 @@ const ShopProductDetails = (appProps) => {
     // If the article is present in cart update the object by newAmount
     if (presentArticle) {
       let newState = appProps.props.cart.map((obj) => {
-        console.log("obj.id", obj.id);
         if (obj.id === currentProduct.id) {
-          return { ...obj, amount: orderAmount + obj.amount };
+          return { ...obj, amount: Number(orderAmount) + Number(obj.amount) };
         } else return obj;
       });
       appProps.props.setCart(newState);
+      console.log("Current Cart", appProps.props.cart);
       return;
       // if it is not present add it to the cart object
     } else {
@@ -64,6 +59,9 @@ const ShopProductDetails = (appProps) => {
       newState.push({
         productName: currentProduct.productName,
         amount: orderAmount,
+        price: currentProduct.productPrice,
+        location:
+          process.env.PUBLIC_URL + "/" + currentProduct.productLocationUrl,
         id: currentProduct.id,
       });
       appProps.props.setCart(newState);
@@ -71,25 +69,29 @@ const ShopProductDetails = (appProps) => {
     }
   }
 
-  function incrementCart(e) {
-    setOrderAmount(orderAmount + 1)
-
+  // Increase order amount by 1
+  function incrementCart() {
+    setOrderAmount(orderAmount + 1);
   }
 
-  function decrementCart(e) {
+  // Decrease order amount by 1 if amount is not lower than 2
+  function decrementCart() {
     if (orderAmount < 2) {
-      return
+      return;
     }
-    setOrderAmount(orderAmount - 1)
+    setOrderAmount(orderAmount - 1);
   }
 
-  // console.log("ShopProductDetails Props from APP", AllProducts);
-  // console.log("currentProductcurrentProductcurrentProduct", currentProduct);
-  // console.log("propspropspropspropspropsprops",appProps.props)
+  // Set order amount by specified amount
+  function handleOrderAmountCart(e) {
+    if (e.target.value < 1) setOrderAmount(1);
+    else setOrderAmount(e.target.value);
+  }
+
   return (
     <div className="shop-content">
-      <Link to={originLocation}>
-        <div className="product-details-back-link">Go Back</div>
+      <Link to={originLocation} className="product-details-back-link">
+        <div>Go Back</div>
       </Link>
       <h2 className="shop-header">{currentProduct.productName}</h2>
       <div className="product-details-container">
@@ -119,10 +121,7 @@ const ShopProductDetails = (appProps) => {
                 type={"number"}
                 id={currentProduct.id}
                 className="product-amount"
-                onChange={(e) => {
-                  if (e.target.value < 1) e.target.value = 1;
-                  else setOrderAmount(orderAmount);
-                }}
+                onChange={handleOrderAmountCart}
                 value={orderAmount}
               ></input>
               <div
