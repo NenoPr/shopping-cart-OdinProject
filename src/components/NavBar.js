@@ -19,9 +19,15 @@ function NavBar(appProps) {
 
   function displayCart() {
     let cartDisplayStatus = document.getElementById("cart");
-    if (cartDisplayStatus.classList.contains("toggle-cart-display"))
+    if (cartDisplayStatus.classList.contains("toggle-cart-display")) {
       cartDisplayStatus.classList.remove("toggle-cart-display");
-    else cartDisplayStatus.classList.add("toggle-cart-display");
+      document.body.style.overflow =
+      "hidden";
+    } else {
+      cartDisplayStatus.classList.add("toggle-cart-display");
+      document.body.style.overflow =
+      "unset";
+    }
   }
 
   function incrementCart(e) {
@@ -78,6 +84,14 @@ function NavBar(appProps) {
     appProps.props.setCart(newState);
   }
 
+  function totalAmountInCart() {
+    let amountInCart = 0;
+    appProps.props.cart.map((item) => {
+      amountInCart += item.amount;
+    });
+    return `${appProps.props.cart.length} Products, ${amountInCart} Items`;
+  }
+
   return (
     <div className="nav-content">
       <div>Logo</div>
@@ -89,6 +103,9 @@ function NavBar(appProps) {
       </Link>
       <Link to={"/about"} className="nav-links">
         <div>About</div>
+      </Link>
+      <Link to={"/checkout"} className="nav-links">
+        <div>Checkout</div>
       </Link>
       <div className="shopping-cart-article-holder">
         <span className="shopping-cart-article-counter">
@@ -102,7 +119,13 @@ function NavBar(appProps) {
       <div className="toggle-cart-display" id="cart">
         <div className="shopping-cart-container">
           <div className="shopping-cart-header-container">
-            <div className="shopping-cart-headline">Shopping Cart</div>
+            <div className="shopping-cart-headline">
+              Cart{" "}
+              <div className="shopping-cart-header-amount-items">
+                {totalAmountInCart()}
+              </div>
+            </div>
+
             <span className="close-shopping-cart" onClick={displayCart}>
               Close
             </span>
@@ -146,7 +169,8 @@ function NavBar(appProps) {
                       </div>
                     </div>
                     <div className="shopping-cart-product-price">
-                      {(item.price * item.amount).toFixed(2)}$
+                      {(item.price * item.amount).toFixed(2)}{" "}
+                      <span className="shopping-cart-dollar-sign"> $</span>
                     </div>
                     <div
                       className="shopping-cart-remove-product"
@@ -159,17 +183,18 @@ function NavBar(appProps) {
                 </div>
               ))
             ) : (
-              <div>Shopping Cart Empty</div>
+              <div className="shopping-cart-empty-cart">No Items</div>
             )}
           </div>
           {appProps.props.cart.length >= 1 ? (
-            <>
+            <div className="shopping-cart-lower-container">
               <div className="shopping-cart-total-price-container">
                 <div className="shopping-cart-total-price-header">
                   Total Price:
                 </div>
                 <div className="shopping-cart-total-price-amount">
-                  {totalPrice.toFixed(2)}$
+                  {totalPrice.toFixed(2)}{" "}
+                  <span className="shopping-cart-dollar-sign">$</span>
                 </div>
               </div>
               <Link
@@ -181,7 +206,7 @@ function NavBar(appProps) {
                   Proceed to Checkout
                 </div>
               </Link>
-            </>
+            </div>
           ) : (
             <></>
           )}

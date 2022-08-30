@@ -136,7 +136,9 @@ const ShopProductDetails = (appProps) => {
               <div className="product-add-to-cart" onClick={handleAddToCart}>
                 Add to Cart
               </div>
-              <div className="product-proceed-to-checkout">Buy Now</div>
+              <Link to={"/checkout"} className="product-proceed-to-checkout">
+              <div onClick={handleAddToCart}>Buy Now</div>
+              </Link>
             </div>
             <div className="product-summary-container">
               <div className="product-summary-title">Summary</div>

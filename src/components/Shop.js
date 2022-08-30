@@ -87,7 +87,7 @@ const Shop = (appProps) => {
 
   return (
     <div className="shop-content">
-      <h2 className="shop-header">Shop Content</h2>
+      <h2 className="shop-header">Shop</h2>
       <div className="shop-sidebar">
         <Link to={"/shop"} className="sidebar-option-Link">
           <div
@@ -169,7 +169,10 @@ const Shop = (appProps) => {
           categories !== undefined
             ? AllProducts[categories].map((article) => (
                 <div className="shop-article" key={uniqid()}>
-                  <Link to={`/shop/${categories}/${article.productName}`} className="nav-links-articles">
+                  <Link
+                    to={`/shop/${categories}/${article.productName}`}
+                    className="nav-links-articles"
+                  >
                     <img
                       className="shop-img"
                       src={
@@ -186,7 +189,7 @@ const Shop = (appProps) => {
                   <div className="product-type-holder">
                     {article.productType}
                   </div>
-                  <div className="product-price">{article.productPrice}$</div>
+                  <div className="product-price">{article.productPrice} <span>$</span></div>
                   <div
                     className="add-to-cart"
                     onClick={addToCart}
@@ -201,7 +204,10 @@ const Shop = (appProps) => {
               Object.keys(AllProducts).map((categories) =>
                 AllProducts[categories].map((article) => (
                   <div className="shop-article" key={uniqid()}>
-                    <Link to={`/shop/${categories}/${article.productName}`} className="nav-links-articles">
+                    <Link
+                      to={`/shop/${categories}/${article.productName}`}
+                      className="nav-links-articles"
+                    >
                       <img
                         className="shop-img"
                         src={
@@ -218,7 +224,7 @@ const Shop = (appProps) => {
                     <div className="product-type-holder">
                       {article.productType}
                     </div>
-                    <div className="product-price">{article.productPrice}$</div>
+                    <div className="product-price">{article.productPrice} <span style={{fontSize: "1.5rem",}}>$</span></div>
                     <div
                       className="add-to-cart"
                       onClick={addToCart}
@@ -227,6 +233,16 @@ const Shop = (appProps) => {
                     >
                       Add to Cart
                     </div>
+                    <Link to={"/checkout"} className="shop-buy-now">
+                    <div
+                      
+                      onClick={addToCart}
+                      id={article.id}
+                      name={article.productName}
+                    >
+                      Buy Now
+                    </div>
+                    </Link>
                   </div>
                 ))
               )

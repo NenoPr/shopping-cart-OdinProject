@@ -1,3 +1,14 @@
+:root {
+  --main-bg-color-1: #ffffff;
+  --main-bg-color-2: #081216;
+  --accent-color-1: #2aa1c6;
+  --accent-color-2: #65e55e;
+}
+
+html {
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
