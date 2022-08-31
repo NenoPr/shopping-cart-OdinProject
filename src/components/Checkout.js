@@ -286,7 +286,7 @@ const Checkout = (appProps) => {
             {
               // Map through every article in cart
               appProps.props.cart.map((item) => (
-                <div className="checkout-item" key={item.id}>
+                <div className="checkout-item" key={(item.id+item.size+item.color)}>
                   <div className="checkout-image-container">
                     <img
                       className="checkout-img"

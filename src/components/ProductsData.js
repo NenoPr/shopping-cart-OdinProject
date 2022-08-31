@@ -15,6 +15,21 @@ const AllProducts = {
       productPrice: 24.49,
       productLocationUrl: "images/That Girl ウマ娘.jpg",
       id: uniqid(),
+      reviews: [
+        {
+          name: "David",
+          stars: "⭐⭐⭐⭐⭐",
+          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem et error qui dignissimos inventore, optio aperiam voluptas, dolorum, impedit possimus aliquid vitae eum facilis laudantium quasi illo ea nihil ipsa?"
+        },{
+          name: "Amy",
+          stars: "⭐⭐⭐⭐",
+          text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non quos sed officia assumenda, at recusandae?"
+        },{
+          name: "Mark",
+          stars: "⭐⭐⭐⭐⭐",
+          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere repellendus magni quasi, error nobis odio eos. Distinctio porro inventore magnam vitae quisquam adipisci? Quaerat consequuntur cum eum ut quibusdam dignissimos distinctio fugiat, temporibus aliquam nulla."
+        },
+      ]
     },
     {
       productType: "Poster",

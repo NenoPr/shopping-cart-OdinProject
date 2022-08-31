@@ -72,6 +72,7 @@ const Shop = (appProps) => {
       });
       newState.push({
         productName: e.target.getAttribute("name"),
+        productType: selectedProductObject.productType,
         amount: 1,
         price: selectedProductObject.productPrice,
         location:
@@ -87,8 +88,23 @@ const Shop = (appProps) => {
 
   return (
     <div className="shop-content">
-      <h2 className="shop-header">Shop</h2>
-      <div className="shop-sidebar">
+      <div className="shop-current-location-navigation-links">
+        <Link to={"/"} className="shop-nav-Link">
+          Home
+        </Link>
+        <span>{"->"}</span>
+        <Link to={`/shop`} className="shop-nav-Link">
+          Shop
+        </Link>
+        {categories === undefined ? null : (
+          <span>
+            <span>{"->"}</span>
+            <span>{categories[0].toUpperCase() + categories.slice(1)}</span>
+          </span>
+        )}
+      </div>
+      <h2 className="shop-header-title">Shop</h2>
+      <div className="shop-sidebar-container">
         <Link to={"/shop"} className="sidebar-option-Link">
           <div
             className="sidebar-option sidebar-selected-category"
@@ -189,7 +205,9 @@ const Shop = (appProps) => {
                   <div className="product-type-holder">
                     {article.productType}
                   </div>
-                  <div className="product-price">{article.productPrice} <span>$</span></div>
+                  <div className="product-price">
+                    {article.productPrice} <span>$</span>
+                  </div>
                   <div
                     className="add-to-cart"
                     onClick={addToCart}
@@ -198,6 +216,15 @@ const Shop = (appProps) => {
                   >
                     Add to Cart
                   </div>
+                  <Link to={"/checkout"} className="shop-buy-now">
+                    <div
+                      onClick={addToCart}
+                      id={article.id}
+                      name={article.productName}
+                    >
+                      Buy Now
+                    </div>
+                  </Link>
                 </div>
               ))
             : // Render all Items if categories is set to null
@@ -224,7 +251,10 @@ const Shop = (appProps) => {
                     <div className="product-type-holder">
                       {article.productType}
                     </div>
-                    <div className="product-price">{article.productPrice} <span style={{fontSize: "1.5rem",}}>$</span></div>
+                    <div className="product-price">
+                      {article.productPrice}{" "}
+                      <span style={{ fontSize: "1.5rem" }}>$</span>
+                    </div>
                     <div
                       className="add-to-cart"
                       onClick={addToCart}
@@ -234,14 +264,13 @@ const Shop = (appProps) => {
                       Add to Cart
                     </div>
                     <Link to={"/checkout"} className="shop-buy-now">
-                    <div
-                      
-                      onClick={addToCart}
-                      id={article.id}
-                      name={article.productName}
-                    >
-                      Buy Now
-                    </div>
+                      <div
+                        onClick={addToCart}
+                        id={article.id}
+                        name={article.productName}
+                      >
+                        Buy Now
+                      </div>
                     </Link>
                   </div>
                 ))

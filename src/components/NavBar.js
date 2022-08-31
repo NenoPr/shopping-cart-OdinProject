@@ -19,14 +19,14 @@ function NavBar(appProps) {
 
   function displayCart() {
     let cartDisplayStatus = document.getElementById("cart");
-    if (cartDisplayStatus.classList.contains("toggle-cart-display")) {
-      cartDisplayStatus.classList.remove("toggle-cart-display");
-      document.body.style.overflow =
-      "hidden";
+    if (cartDisplayStatus.classList.contains("toggle-cart-display-off")) {
+      cartDisplayStatus.classList.remove("toggle-cart-display-off");
+      cartDisplayStatus.classList.add("toggle-cart-display-on");
+      document.body.style.overflow = "hidden";
     } else {
-      cartDisplayStatus.classList.add("toggle-cart-display");
-      document.body.style.overflow =
-      "unset";
+      cartDisplayStatus.classList.add("toggle-cart-display-off");
+      cartDisplayStatus.classList.remove("toggle-cart-display-on");
+      document.body.style.overflow = "auto";
     }
   }
 
@@ -94,7 +94,9 @@ function NavBar(appProps) {
 
   return (
     <div className="nav-content">
-      <div>Logo</div>
+      <Link to={"/"} className="nav-links">
+        <div className="nav-bar-logo">Logo</div>
+      </Link>
       <Link to={"/"} className="nav-links">
         <div>Home</div>
       </Link>
@@ -107,16 +109,19 @@ function NavBar(appProps) {
       <Link to={"/checkout"} className="nav-links">
         <div>Checkout</div>
       </Link>
-      <div className="shopping-cart-article-holder">
-        <span className="shopping-cart-article-counter">
-          {appProps.props.cart.length >= 1 ? appProps.props.cart.length : ""}
+      <div className="nav-bar-cart-Link">
+        <span className="shopping-cart-article-counter-holder">
+          <span className="shopping-cart-article-counter">
+            {appProps.props.cart.length >= 1 ? appProps.props.cart.length : ""}
+          </span>
         </span>
         <div className="nav-links cart-svg" onClick={displayCart}>
           <CartIcon />
         </div>
       </div>
 
-      <div className="toggle-cart-display" id="cart">
+      <div className="toggle-cart-display-off" id="cart">
+        <div className="shopping-cart-close-cover" onClick={displayCart}></div>
         <div className="shopping-cart-container">
           <div className="shopping-cart-header-container">
             <div className="shopping-cart-headline">
@@ -133,7 +138,7 @@ function NavBar(appProps) {
           <div className="shopping-cart-article-list">
             {appProps.props.cart.length >= 1 ? (
               appProps.props.cart.map((item) => (
-                <div className="shopping-cart-item" key={item.id}>
+                <div className="shopping-cart-item" key={(item.id+item.size+item.color)}>
                   <div className="shopping-cart-image-container">
                     <img
                       className="shopping-cart-img"
@@ -141,10 +146,48 @@ function NavBar(appProps) {
                       alt={item.productName}
                     />
                   </div>
-                  <div className="shopping-cart-product-info">
-                    <div className="shopping-cart-product-name">
-                      {item.productName}
+                  <div className="shopping-cart-product-info-container">
+                    <div className="shopping-cart-product-info">
+                      <div className="shopping-cart-product-name">
+                        {item.productName}
+                      </div>
                     </div>
+                    {item.productType === "Clothes" ? (
+                      <div className="nav-bar-product-details-selections">
+                        <div className="nav-bar-product-details-selections-titles">
+                          Color
+                        </div>
+                        <select name="nav-bar-product-color" className="nav-bar-product-color" defaultValue={item.color}>
+                          <option value="white">⚪ White</option>
+                          <option value="black">⚫ Black</option>
+                          <option value="blue">🔵 Blue</option>
+                          <option value="green">🟢 Green</option>
+                          <option value="red">🔴 Red</option>
+                          <option value="yellow">🟡 Yellow</option>
+                        </select>
+                        <div className="nav-bar-product-details-selections-titles">
+                          Size
+                        </div>
+                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size}>
+                          <option value="xs">XS</option>
+                          <option value="s">S</option>
+                          <option value="m">M</option>
+                          <option value="l">L</option>
+                          <option value="xl">XL</option>
+                        </select>
+                      </div>
+                    ) : item.productType === "Poster" ? (
+                      <div className="nav-bar-product-details-selections">
+                        <div className="nav-bar-product-details-selections-titles">
+                          Size
+                        </div>
+                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size}>
+                          <option value="s">Small</option>
+                          <option value="m">Medium</option>
+                          <option value="l">Large</option>
+                        </select>
+                      </div>
+                    ) : null}
                     <div className="shopping-cart-product-amount-container">
                       <div
                         className="shopping-cart-product-amount-control"
@@ -200,7 +243,7 @@ function NavBar(appProps) {
               <Link
                 to={"/checkout"}
                 onClick={displayCart}
-                className="nav-links"
+                className="proceed-to-checkout-nav-link"
               >
                 <div className="shopping-cart-proceed-to-checkout">
                   Proceed to Checkout
