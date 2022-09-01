@@ -88,7 +88,7 @@
     width: 100%;
     height: 38vh;
     object-fit: cover;
-    object-position: 0% 20%;
+    object-position: center;
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
 }
@@ -104,7 +104,7 @@
 }
 
 .product-name-holder {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
@@ -113,6 +113,10 @@
 }
 
 .product-price {
+    font-size: 1.5rem;
+}
+
+.shop-product-price-dollar {
     font-size: 1.5rem;
 }
 

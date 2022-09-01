@@ -27,6 +27,8 @@ const Shop = (appProps) => {
         .classList.add("sidebar-selected-category");
       appProps.items.setLastLocation("allItems");
     }
+    // Reset the scroll position to top
+    window.scrollTo(0, 0);
   }, [categories, appProps.items.lastLocation]);
 
   // Gives class to element on the DOM to show current category selection
@@ -79,7 +81,10 @@ const Shop = (appProps) => {
           process.env.PUBLIC_URL +
           "/" +
           selectedProductObject.productLocationUrl,
-        id: e.target.id,
+          productInfo: selectedProductObject.productColors,
+          id: e.target.id,
+          color: "white",
+          size: "m",
       });
       appProps.items.setCart(newState);
       console.log("Current Cart", appProps.items.cart);
@@ -114,15 +119,16 @@ const Shop = (appProps) => {
             All Items
           </div>
         </Link>
-        <Link to={"/shop/posters"} className="sidebar-option-Link">
+        <Link to={`/shop/clothes`} className="sidebar-option-Link">
           <div
             className="sidebar-option"
             onClick={updateCategoryRender}
-            category={"posters"}
+            category={"clothes"}
           >
-            Posters
+            Clothes
           </div>
         </Link>
+
         <Link to={"/shop/figures"} className="sidebar-option-Link">
           <div
             className="sidebar-option"
@@ -141,15 +147,16 @@ const Shop = (appProps) => {
             Mouse Pads
           </div>
         </Link>
-        <Link to={`/shop/clothes`} className="sidebar-option-Link">
+        <Link to={"/shop/posters"} className="sidebar-option-Link">
           <div
             className="sidebar-option"
             onClick={updateCategoryRender}
-            category={"clothes"}
+            category={"posters"}
           >
-            Clothes
+            Posters
           </div>
         </Link>
+
         <Link to={`/shop/stickers`} className="sidebar-option-Link">
           <div
             className="sidebar-option"
@@ -161,25 +168,6 @@ const Shop = (appProps) => {
         </Link>
       </div>
       <div className="shop-articles">
-        {/* {
-        <div className="shop-article" key={uniqid()}>
-          <img className="shop-img" src={process.env.PUBLIC_URL + "/" + AllProducts.posters[1].productLocationUrl} alt="placeholder" />
-          <div className="product-name-holder">
-            {AllProducts.posters[0].productName}
-          </div>
-        <div className="product-type-holder">
-          {AllProducts.posters[0].productType}
-        </div>
-        <div className="product-price">{AllProducts.posters[0].productPrice}$</div>
-        <div
-          className="add-to-cart"
-          onClick={addToCart}
-          id={AllProducts.posters[0].id}
-          name={AllProducts.posters[0].productName}
-        >
-          Add to Cart
-        </div>
-      </div>} */}
         {
           // render articles based on the selected categories useParams value from the URL
           categories !== undefined
@@ -206,7 +194,7 @@ const Shop = (appProps) => {
                     {article.productType}
                   </div>
                   <div className="product-price">
-                    {article.productPrice} <span>$</span>
+                    {article.productPrice} <span className="shop-product-price-dollar">$</span>
                   </div>
                   <div
                     className="add-to-cart"
@@ -253,7 +241,7 @@ const Shop = (appProps) => {
                     </div>
                     <div className="product-price">
                       {article.productPrice}{" "}
-                      <span style={{ fontSize: "1.5rem" }}>$</span>
+                      <span className="shop-product-price-dollar">$</span>
                     </div>
                     <div
                       className="add-to-cart"

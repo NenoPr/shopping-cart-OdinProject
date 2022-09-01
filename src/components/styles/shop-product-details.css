@@ -70,8 +70,28 @@ span {
   width: 25vw;
   height: 70vh;
   object-fit: contain;
-  object-position: 50% 50%;
+  object-position: center;
   border-radius: 0.5rem;
+}
+
+.product-images-selection-container {
+  display: flex;
+  position: relative;
+  bottom: 10%;
+  gap: .5rem;
+}
+
+.images-selection-holder {
+  height: 10vh;
+  width: 5vw;
+  cursor: pointer;
+}
+
+.images-selection-image {
+  height: 100%;
+  width: 100%;
+  border-radius: .5rem;
+  object-fit: cover;
 }
 
 .product-details {

@@ -69,18 +69,24 @@ function NavBar(appProps) {
 
   function removeItemFromCart(e) {
     let product_id = e.target.getAttribute("product_id");
-    console.log("product_idproduct_idproduct_id", product_id);
-    var newState = appProps.props.cart
+    let product_size = e.target.getAttribute("size_value");
+    let product_color = e.target.getAttribute("color_value");
+
+    let newState = appProps.props.cart
       .filter(function (obj) {
         if (obj.id === product_id) {
-          return false;
+          if (obj.size === product_size) {
+            if (obj.color === product_color) {
+              return false;
+            }
+          }
         }
         return true;
       })
       .map(function (obj) {
         return obj;
       });
-    console.log("newStatenewStatenewState", newState);
+    console.log("New Cart state to set:", newState);
     appProps.props.setCart(newState);
   }
 
@@ -94,8 +100,8 @@ function NavBar(appProps) {
 
   return (
     <div className="nav-content">
-      <Link to={"/"} className="nav-links">
-        <div className="nav-bar-logo">Logo</div>
+      <Link to={"/"} className="nav-links nav-bar-logo-link">
+      <img src="/shopping-cart-OdinProject/images/site-logo.jpg" alt="logo" className="nav-bar-logo" /><span className="nav-bar-logo-text">Fan Shop!</span>
       </Link>
       <Link to={"/"} className="nav-links">
         <div>Home</div>
@@ -140,11 +146,21 @@ function NavBar(appProps) {
               appProps.props.cart.map((item) => (
                 <div className="shopping-cart-item" key={(item.id+item.size+item.color)}>
                   <div className="shopping-cart-image-container">
-                    <img
-                      className="shopping-cart-img"
-                      src={item.location}
-                      alt={item.productName}
-                    />
+                    {item.productInfo ? item.productInfo.map(info => (
+                      item.color === info.color ?
+                      <img
+                        className="shopping-cart-img"
+                        src={"/shopping-cart-OdinProject/" + info.image}
+                        alt={item.productName + info.color}
+                        key={info.image + info.color}
+                      />
+                      : null
+                    )) : <img
+                    className="shopping-cart-img"
+                    src={item.location}
+                    alt={item.productName}
+                    key={item.image + item.productName}
+                  />}
                   </div>
                   <div className="shopping-cart-product-info-container">
                     <div className="shopping-cart-product-info">
@@ -157,7 +173,7 @@ function NavBar(appProps) {
                         <div className="nav-bar-product-details-selections-titles">
                           Color
                         </div>
-                        <select name="nav-bar-product-color" className="nav-bar-product-color" defaultValue={item.color}>
+                        <select name="nav-bar-product-color" className="nav-bar-product-color" defaultValue={item.color} disabled={true}>
                           <option value="white">⚪ White</option>
                           <option value="black">⚫ Black</option>
                           <option value="blue">🔵 Blue</option>
@@ -168,7 +184,7 @@ function NavBar(appProps) {
                         <div className="nav-bar-product-details-selections-titles">
                           Size
                         </div>
-                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size}>
+                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size} disabled={true}>
                           <option value="xs">XS</option>
                           <option value="s">S</option>
                           <option value="m">M</option>
@@ -176,12 +192,12 @@ function NavBar(appProps) {
                           <option value="xl">XL</option>
                         </select>
                       </div>
-                    ) : item.productType === "Poster" ? (
+                    ) : item.productType === "Poster" || item.productType === "Mouse Pad" ? (
                       <div className="nav-bar-product-details-selections">
                         <div className="nav-bar-product-details-selections-titles">
                           Size
                         </div>
-                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size}>
+                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size} disabled={true}>
                           <option value="s">Small</option>
                           <option value="m">Medium</option>
                           <option value="l">Large</option>
@@ -218,6 +234,8 @@ function NavBar(appProps) {
                     <div
                       className="shopping-cart-remove-product"
                       product_id={item.id}
+                      size_value={item.size}
+                      color_value={item.color}
                       onClick={removeItemFromCart}
                     >
                       Remove Item

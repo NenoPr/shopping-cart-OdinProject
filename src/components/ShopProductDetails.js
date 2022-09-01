@@ -48,11 +48,13 @@ const ShopProductDetails = (appProps) => {
     // Check if the article is present in the cart
     let newColor = "";
     let newSize = "";
+    // Variable to check if the item of the same color already exist
     try {
       newColor = document.getElementById("product-color-id").value;
     } catch (error) {
       console.log("Undefined Color Element");
     }
+    // Variable to check if the item of the same size already exist
     try {
       newSize = document.getElementById("product-size-id").value;
     } catch (error) {
@@ -61,9 +63,9 @@ const ShopProductDetails = (appProps) => {
     appProps.props.cart.map((obj) => {
       if (obj.id === currentProduct.id) {
         if (obj.productType === "Poster") {
-          console.log("Poster")
+          console.log("Poster");
           if (obj.size === newSize) {
-            console.log("Same Size")
+            console.log("Same Size");
             presentArticle = true;
           }
         } else {
@@ -74,9 +76,6 @@ const ShopProductDetails = (appProps) => {
           }
         }
       }
-      // if (obj.id === currentProduct.id) {
-      //   presentArticle = true;
-      // }
     });
     // If the article is present in cart update the object by newAmount
     if (presentArticle) {
@@ -90,9 +89,11 @@ const ShopProductDetails = (appProps) => {
       return;
       // if it is not present add it to the cart object
     } else {
+      // Copy the current cart to newState
       const newState = [...appProps.props.cart];
       let newColor = "";
       let newSize = "";
+      // try to get color and size if present in DOM
       try {
         newColor = document.getElementById("product-color-id").value;
       } catch (error) {
@@ -103,7 +104,7 @@ const ShopProductDetails = (appProps) => {
       } catch (error) {
         console.log("Undefined Size Element");
       }
-
+      // Push the new item to newState
       newState.push({
         productName: currentProduct.productName,
         productType: currentProduct.productType,
@@ -111,10 +112,12 @@ const ShopProductDetails = (appProps) => {
         price: currentProduct.productPrice,
         location:
           process.env.PUBLIC_URL + "/" + currentProduct.productLocationUrl,
+        productInfo: currentProduct.productColors,
         id: currentProduct.id,
         color: newColor,
         size: newSize,
       });
+      // Push newState to cart
       appProps.props.setCart(newState);
       console.log("Current Cart", appProps.props.cart);
     }
@@ -138,8 +141,9 @@ const ShopProductDetails = (appProps) => {
     if (e.target.value < 1) setOrderAmount(1);
     else setOrderAmount(e.target.value);
   }
+
+  // Create a review for the product
   function createReview(e) {
-    let newForm = document.getElementById("create-review");
     let emoji = "";
     for (
       let i = 0;
@@ -153,13 +157,13 @@ const ShopProductDetails = (appProps) => {
       stars: emoji,
       text: document.getElementById("reviewText").value,
     };
-
-    // AllProducts[categories].map((article) => {
-    //   if (article.productName === product) {
-    //     article.reviews.push(newReview);
-    //   }
-    // });
-    setCurrentProductReviews([...currentProductReviews, newReview]);
+    // If there are reviews copy the array and add a new object to it
+    // If there are no reviews set the newReview as a new state
+    if (currentProductReviews) {
+      setCurrentProductReviews([...currentProductReviews, newReview]);
+    } else {
+      setCurrentProductReviews([newReview]);
+    }
     document.querySelectorAll("input").forEach((item) => {
       item.value = "";
     });
@@ -170,6 +174,10 @@ const ShopProductDetails = (appProps) => {
       item.value = "";
     });
     console.log("currentProductcurrentProduct", currentProduct);
+  }
+
+  function changeCurrentImage(e) {
+    document.querySelector(".product-image").src = e.target.src
   }
 
   useEffect(() => {
@@ -214,6 +222,20 @@ const ShopProductDetails = (appProps) => {
               alt={currentProduct.productName}
               key={currentProduct.productLocationUrl}
             />
+            <div className="product-images-selection-container">
+            {currentProduct.productImages ?
+            currentProduct.productImages.map(item => (
+              <div className="images-selection-holder" key={item} onClick={(e) => document.querySelector(".product-image").src = e.target.src}>
+                <img className="images-selection-image"
+                  src={
+                    "/shopping-cart-OdinProject/" +
+                    item
+                  }
+                  alt=""
+                />
+              </div>
+            )) : null}
+            </div>
           </div>
           <div className="product-details">
             <div className="product-details-info-container">
@@ -270,12 +292,9 @@ const ShopProductDetails = (appProps) => {
                     Color
                   </div>
                   <select name="product-color" id="product-color-id">
-                    <option value="white">⚪ White</option>
-                    <option value="black">⚫ Black</option>
-                    <option value="blue">🔵 Blue</option>
-                    <option value="green">🟢 Green</option>
-                    <option value="red">🔴 Red</option>
-                    <option value="yellow">🟡 Yellow</option>
+                  {currentProduct.productColors.map(item => (
+                    <option key={item.color+item.icon+item.image} value={item.color}> {item.icon + (item.color[0].toUpperCase() + item.color.slice(1))}</option>
+                  ))}
                   </select>
                   <div className="product-details-selections-titles">Size</div>
                   <select
@@ -290,7 +309,8 @@ const ShopProductDetails = (appProps) => {
                     <option value="xl">XL</option>
                   </select>
                 </div>
-              ) : currentProduct.productType === "Poster" ? (
+              ) : currentProduct.productType === "Poster" ||
+                currentProduct.productType === "Mouse Pad" ? (
                 <div className="product-details-selections">
                   <div className="product-details-selections-titles">Size</div>
                   <select
