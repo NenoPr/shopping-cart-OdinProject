@@ -89,7 +89,7 @@ const Checkout = (appProps) => {
   useEffect(() => {
     // Reset the scroll position to top
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   // Increment cart amount by 1
   function incrementCart(e) {
@@ -305,11 +305,25 @@ const Checkout = (appProps) => {
                   key={item.id + item.size + item.color}
                 >
                   <div className="checkout-image-container">
-                    <img
-                      className="checkout-img"
-                      src={item.location}
-                      alt={item.productName}
-                    />
+                    {item.productInfo ? (
+                      item.productInfo.map((info) =>
+                        item.color === info.color ? (
+                          <img
+                            className="checkout-img"
+                            src={"/shopping-cart-OdinProject/" + info.image}
+                            alt={item.productName + info.color}
+                            key={info.image + info.color}
+                          />
+                        ) : null
+                      )
+                    ) : (
+                      <img
+                        className="checkout-img"
+                        src={item.location}
+                        alt={item.productName}
+                        key={item.image + item.productName}
+                      />
+                    )}
                   </div>
                   <div className="checkout-product-info">
                     <div className="checkout-product-name">
@@ -349,7 +363,8 @@ const Checkout = (appProps) => {
                           <option value="xl">XL</option>
                         </select>
                       </div>
-                    ) : item.productType === "Poster" || item.productType === "Mouse Pad" ? (
+                    ) : item.productType === "Poster" ||
+                      item.productType === "Mouse Pad" ? (
                       <div className="checkout-product-details-selections">
                         <div className="checkout-product-details-selections-titles">
                           Size
