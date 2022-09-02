@@ -1,5 +1,10 @@
+import React, { useEffect } from "react";
 import "./styles/about.css";
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="about-content">
       <div className="about-header">ABOUT US</div>
