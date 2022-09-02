@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import "./styles/purchase-completed.css";
 
 function PurchaseCompleted(appProps) {
-    console.log("PurchaseCompleted appProps from App",appProps)
-    useEffect(() => {
-        appProps.props.setCart([])
-    }, [])
+  console.log("PurchaseCompleted appProps from App", appProps);
+  useEffect(() => {
+    appProps.props.setCart([]);
+    // Reset the scroll position to top
+    window.scrollTo(0, 0);
+  }, [appProps.props]);
   return (
     <div className="purchase-completed-container">
       <div className="purchase-completed">Purchase Completed!</div>

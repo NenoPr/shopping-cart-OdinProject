@@ -15,6 +15,22 @@ const About = () => {
         </div>
         {/* <img src="/shopping-cart-OdinProject/images/stickers/diluc_sticker_1.png" alt="diluc mixing cocktails" /> */}
       </div>
+      <div className="made-by">
+        <div>
+          This site was made as a project from The Odin Project curriculum.
+        </div>
+        <div>
+          {" "}
+          <a href="https://github.com/NenoPr" className="about-github_link">
+            {" "}
+            <img
+              src="/shopping-cart-OdinProject/GitHub-Mark-32px.png"
+              alt="GitHub Logo"
+            />{" "}
+            Made by NenoPr{" "}
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

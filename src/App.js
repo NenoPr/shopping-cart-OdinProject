@@ -6,6 +6,7 @@ import Shop from "./components/Shop";
 import About from "./components/About";
 import ShopProductDetails from "./components/ShopProductDetails";
 import Checkout from "./components/Checkout";
+import Footer from "./components/Footer";
 import AllProducts from "./components/ProductsData";
 import PurchaseCompleted from "./components/PurchaseCompleted";
 import "./App.css";
@@ -32,7 +33,7 @@ const App = () => {
             <Route path={"/purchase-completed"} element={<PurchaseCompleted props={{cart,setCart}} />} />
           </Routes>
         </div>
-        <footer className="app-footer">Footer Content</footer>
+        <footer className="app-footer"><Footer /></footer>
       </div>
     </HashRouter>
   );

@@ -81,10 +81,10 @@ const Shop = (appProps) => {
           process.env.PUBLIC_URL +
           "/" +
           selectedProductObject.productLocationUrl,
-          productInfo: selectedProductObject.productColors,
-          id: e.target.id,
-          color: "white",
-          size: "m",
+        productInfo: selectedProductObject.productColors,
+        id: e.target.id,
+        color: "white",
+        size: "m",
       });
       appProps.items.setCart(newState);
       console.log("Current Cart", appProps.items.cart);
@@ -108,7 +108,14 @@ const Shop = (appProps) => {
           </span>
         )}
       </div>
-      <h2 className="shop-header-title">SHOP</h2>
+      <div className="shop-header-title-container">
+        <h2 className="shop-header-title" >SHOP</h2>
+        <div className="shop-header-category">
+          {categories === undefined
+            ? "All Items"
+            : categories[0].toUpperCase() + categories.slice(1)}
+        </div>
+      </div>
       <div className="shop-sidebar-container">
         <Link to={"/shop"} className="sidebar-option-Link">
           <div
@@ -167,7 +174,7 @@ const Shop = (appProps) => {
           </div>
         </Link>
       </div>
-      <div className="shop-articles">
+      <div className="shop-articles-container">
         {
           // render articles based on the selected categories useParams value from the URL
           categories !== undefined
@@ -194,7 +201,8 @@ const Shop = (appProps) => {
                     {article.productType}
                   </div>
                   <div className="product-price">
-                    {article.productPrice} <span className="shop-product-price-dollar">$</span>
+                    {article.productPrice}{" "}
+                    <span className="shop-product-price-dollar">$</span>
                   </div>
                   <div
                     className="add-to-cart"
