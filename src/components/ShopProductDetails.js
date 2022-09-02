@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ReactDOM } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 import AllProducts from "./ProductsData";
 import uniqid from "uniqid";
 import "./styles/shop.css";
@@ -14,6 +15,7 @@ const ShopProductDetails = (appProps) => {
   const [currentProductReviews, setCurrentProductReviews] = useState([]);
   const [originLocation, setOriginLocation] = useState("");
   const [orderAmount, setOrderAmount] = useState(1);
+  const navigate = useNavigate();
   console.log("ShopProductDetails appProps fromApp", appProps);
   console.log("currentProduct Reviews:", currentProduct.reviews);
 
@@ -164,6 +166,11 @@ const ShopProductDetails = (appProps) => {
     } else {
       setCurrentProductReviews([newReview]);
     }
+    AllProducts[categories].map((article) => {
+      if (article.id === currentProduct.id) {
+        article.reviews.push(newReview)
+      }
+    });
     document.querySelectorAll("input").forEach((item) => {
       item.value = "";
     });
@@ -206,9 +213,7 @@ const ShopProductDetails = (appProps) => {
           <span>{currentProduct.productName}</span>
         </div>
         <div className="product-details-back-link-container">
-          <Link to={originLocation} className="product-details-back-link">
-            <div>{"◀ Back"}</div>
-          </Link>
+            <div className="product-details-back-link" onClick={() => navigate(-1)}>{"◀ Back"}</div>
         </div>
       </div>
       <div className="product-details-container">

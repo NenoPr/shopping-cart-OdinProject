@@ -2,8 +2,19 @@ import "./styles/about.css";
 const About = () => {
   return (
     <div className="about-content">
-        <div className="about-header">About Content</div>
-        <div>This site was made for The Odin Project course as a project with the theme of Shopping Cart.</div>
+      <div className="about-header">ABOUT US</div>
+      <div className="about-content-container">
+        <div className="about-content-text">
+          We are a distributor of Genshin Impact Merchandise. Except we are not
+          of course because this is a fake site made as a project from The Odin
+          Project Curriculum. If we were, we would say that we offer the best
+          and most high quality Genshin impact Merchandise of which all the
+          materials are of the highest quality, ethically sourced and are good
+          for the environment! We are also Carbon Negative. Every purchase we
+          plant a tree. You are a good person if you buy from here.
+        </div>
+        {/* <img src="/shopping-cart-OdinProject/images/stickers/diluc_sticker_1.png" alt="diluc mixing cocktails" /> */}
+      </div>
     </div>
   );
 };

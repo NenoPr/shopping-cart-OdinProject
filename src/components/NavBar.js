@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "../shopping_cart.svg";
+import {ReactComponent as GenshinLogo} from "../Genshin_Impact_logo.svg"
 import "./styles/nav-bar.css";
 
 function NavBar(appProps) {
@@ -101,19 +102,19 @@ function NavBar(appProps) {
   return (
     <div className="nav-content">
       <Link to={"/"} className="nav-links nav-bar-logo-link">
-      <img src="/shopping-cart-OdinProject/images/site-logo.jpg" alt="logo" className="nav-bar-logo" /><span className="nav-bar-logo-text">Fan Shop!</span>
+      <GenshinLogo className="nav-bar-logo" /><span className="nav-bar-logo-text">FAN SHOP!</span>
       </Link>
       <Link to={"/"} className="nav-links">
-        <div>Home</div>
+        <div>HOME</div>
       </Link>
       <Link to={"/shop"} className="nav-links">
-        <div>Shop</div>
+        <div>SHOP</div>
       </Link>
       <Link to={"/about"} className="nav-links">
-        <div>About</div>
+        <div>ABOUT</div>
       </Link>
       <Link to={"/checkout"} className="nav-links">
-        <div>Checkout</div>
+        <div>CHECKOUT</div>
       </Link>
       <div className="nav-bar-cart-Link">
         <span className="shopping-cart-article-counter-holder">

@@ -108,7 +108,7 @@ const Shop = (appProps) => {
           </span>
         )}
       </div>
-      <h2 className="shop-header-title">Shop</h2>
+      <h2 className="shop-header-title">SHOP</h2>
       <div className="shop-sidebar-container">
         <Link to={"/shop"} className="sidebar-option-Link">
           <div

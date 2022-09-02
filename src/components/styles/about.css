@@ -1,7 +1,40 @@
 
 .about-content {
-    margin-top: 5%;
-    display: grid;
+    display: flex;
     flex-direction: column;
-    gap: 50%;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 88vh;
+    width: 100%;
+    color: var(--main-bg-color-2);
+    background-image: url(/public/images/about-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--main-bg-color-1);
+}
+
+.about-header {
+    margin: 5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.about-content-text {
+    font-weight: 600;
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.about-content-container {
+    display: grid;
+    grid-template: auto / 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 80%;
 }

@@ -389,17 +389,17 @@ const AllProducts = {
         {
           color: "yellow",
           icon: "🟡",
-          image: "images/clothes/ganyu_hoodie_blue.jpg",
-        },
-        {
-          color: "black",
-          icon: "⚫",
-          image: "images/clothes/ganyu_hoodie_black.jpg",
+          image: "images/clothes/hu_tao_hoodie3_yellow..jpg",
         },
         {
           color: "white",
           icon: "⚪",
-          image: "images/clothes/ganyu_hoodie_white.jpg",
+          image: "images/clothes/hu_tao_hoodie_3_white.jpg",
+        },
+        {
+          color: "black",
+          icon: "⚫",
+          image: "images/clothes/hu_tao_hoodie_3_black.jpg",
         },
       ],
       reviews: [
@@ -455,7 +455,7 @@ const AllProducts = {
           text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita quo libero hic consectetur tenetur minus nobis exercitationem alias voluptas fugiat! Magni animi ipsa quas earum ullam ipsam delectus accusamus facere?",
         },
       ],
-      
+
       id: uniqid(),
     },
   ],
@@ -491,7 +491,6 @@ const AllProducts = {
           text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
         },
       ],
-      
     },
     {
       productType: "Figure",
@@ -720,7 +719,7 @@ const AllProducts = {
         {
           name: "Just a normal Crow",
           stars: "⭐⭐⭐⭐⭐",
-          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. oluptate, eius. In reprehenderit, minima similique atque voluptas sit laboriosam velit eos?",
         },
         {
           name: "Aether",
@@ -738,7 +737,12 @@ const AllProducts = {
       id: uniqid(),
       reviews: [
         {
-          name: "Just a normal Crow",
+          name: "Sara",
+          stars: "⭐⭐⭐⭐⭐",
+          text: "Fuga dolore quas atque nemo minima earum maxime. Deleniti, repellat?",
+        },
+        {
+          name: "Yae Miko",
           stars: "⭐⭐⭐⭐⭐",
           text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
         },
@@ -993,13 +997,13 @@ const AllProducts = {
         {
           name: "Barbara",
           stars: "⭐⭐⭐⭐⭐",
-          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga dolore quas atque nemo minima earum maxime. Deleniti, repellat? Voluptate, eius. In reprehenderit, minima similique atque voluptas sit laboriosam velit eos?",
+          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga dolore quas atque nemo minima earum maxime. Deleniti, repellat? ",
         },
         {
           name: "Barbara",
           stars: "⭐⭐⭐⭐⭐",
-          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga dolore quas atque nemo minima earum maxime. Deleniti, repellat? Voluptate, eius. In reprehenderit, minima similique atque voluptas sit laboriosam velit eos?",
-        },
+          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
+        }
       ],
     },
   ],

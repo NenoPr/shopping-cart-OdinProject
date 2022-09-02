@@ -21,6 +21,7 @@
   justify-self: left;
   margin-left: 20%;
   width: fit-content;
+  cursor: pointer;
 }
 
 .product-details-back-link {
@@ -54,7 +55,6 @@ span {
   display: flex;
   flex-direction: column;
   width: 70%;
-  gap: 5rem;
 }
 
 .product-info {
