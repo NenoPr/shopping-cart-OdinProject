@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.css": "/shopping-cart-OdinProject/static/css/main.df6af333.css",
-    "main.js": "/shopping-cart-OdinProject/static/js/main.fec03416.js",
+    "main.css": "/shopping-cart-OdinProject/static/css/main.66971f95.css",
+    "main.js": "/shopping-cart-OdinProject/static/js/main.b80d9b6e.js",
     "static/js/787.d6fe38e8.chunk.js": "/shopping-cart-OdinProject/static/js/787.d6fe38e8.chunk.js",
+    "static/media/zh-cn.ttf": "/shopping-cart-OdinProject/static/media/zh-cn.54a8212866e6ec1b1003.ttf",
+    "static/media/home-background1.jpg": "/shopping-cart-OdinProject/static/media/home-background1.be3bf8609c3a1b64f3fe.jpg",
+    "static/media/about-background.png": "/shopping-cart-OdinProject/static/media/about-background.58091f6f22809506c55e.png",
+    "static/media/thank-you-purchase.jpg": "/shopping-cart-OdinProject/static/media/thank-you-purchase.c732540a9d07be162cbd.jpg",
+    "static/media/Genshin_Impact_logo.svg": "/shopping-cart-OdinProject/static/media/Genshin_Impact_logo.37888076ccf8e7756dbea0d8ae6b4beb.svg",
     "static/media/paypal-logo.svg": "/shopping-cart-OdinProject/static/media/paypal-logo.48e007fa057ea0032890449ffb160cd5.svg",
     "index.html": "/shopping-cart-OdinProject/index.html",
     "static/media/shopping_cart.svg": "/shopping-cart-OdinProject/static/media/shopping_cart.d37d9447205ed76e3ffc587bc6d88dd8.svg",
-    "main.df6af333.css.map": "/shopping-cart-OdinProject/static/css/main.df6af333.css.map",
-    "main.fec03416.js.map": "/shopping-cart-OdinProject/static/js/main.fec03416.js.map",
+    "main.66971f95.css.map": "/shopping-cart-OdinProject/static/css/main.66971f95.css.map",
+    "main.b80d9b6e.js.map": "/shopping-cart-OdinProject/static/js/main.b80d9b6e.js.map",
     "787.d6fe38e8.chunk.js.map": "/shopping-cart-OdinProject/static/js/787.d6fe38e8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df6af333.css",
-    "static/js/main.fec03416.js"
+    "static/css/main.66971f95.css",
+    "static/js/main.b80d9b6e.js"
   ]
 }
