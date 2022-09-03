@@ -49,7 +49,7 @@ const Footer = () => {
           <div className="footer-columns-contact-item-title">CONTACT</div>
           <div className="footer-columns-contact-item">Email</div>
           <div className="footer-columns-contact-item">
-            <a href="https://github.com/NenoPr" className="about-Link">
+            <a href="https://github.com/NenoPr" className="about-Link" target="_blank" rel="noreferrer noopener">
               GitHub
             </a>
           </div>

@@ -26,7 +26,7 @@ const About = () => {
         </div>
         <div>
           {" "}
-          <a href="https://github.com/NenoPr" className="about-github_link">
+          <a href="https://github.com/NenoPr" className="about-github_link" target="_blank" rel="noreferrer noopener">
             {" "}
             <img
               src="/shopping-cart-OdinProject/GitHub-Mark-32px.png"
