@@ -7,7 +7,7 @@ function PurchaseCompleted(appProps) {
     appProps.props.setCart([]);
     // Reset the scroll position to top
     window.scrollTo(0, 0);
-  }, [appProps.props]);
+  }, []);
   return (
     <div className="purchase-completed-container">
       <div className="purchase-completed">Purchase Completed!</div>
