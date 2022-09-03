@@ -328,9 +328,22 @@ select {
   padding: 1rem;
   background-color: var(--main-bg-color-1);
   color: var(--main-bg-color-2);
-  border: .1rem solid var(--main-bg-color-2);
+  border: .2rem solid var(--main-bg-color-2);
   border-radius: .5rem;
   cursor: pointer;
   font-weight: 700;
   font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-create-review-submit-button:hover {
+  background-color: var(--main-bg-color-2);
+  color: var(--main-bg-color-1);
+  border-color: var(--main-bg-color-1);
+}
+
+.product-create-review-submit-button:active {
+  background-color: var(--main-bg-color-2);
+  color: var(--main-bg-color-1);
+  border-color: var(--main-bg-color-2);
 }
