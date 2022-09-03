@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartIcon } from "../shopping_cart.svg";
-import {ReactComponent as GenshinLogo} from "../Genshin_Impact_logo.svg"
+import { ReactComponent as GenshinLogo } from "../Genshin_Impact_logo.svg";
 import "./styles/nav-bar.css";
 
 function NavBar(appProps) {
@@ -22,12 +22,17 @@ function NavBar(appProps) {
     let cartDisplayStatus = document.getElementById("cart");
     if (cartDisplayStatus.classList.contains("toggle-cart-display-off")) {
       cartDisplayStatus.classList.remove("toggle-cart-display-off");
+      document.querySelector(".shopping-cart-container").classList.remove("shopping-cart-container-close-animation")
       cartDisplayStatus.classList.add("toggle-cart-display-on");
       document.body.style.overflow = "hidden";
     } else {
       cartDisplayStatus.classList.add("toggle-cart-display-off");
-      cartDisplayStatus.classList.remove("toggle-cart-display-on");
+      document.querySelector(".shopping-cart-container").classList.add("shopping-cart-container-close-animation")
+      setTimeout(() => {
+        cartDisplayStatus.classList.remove("toggle-cart-display-on");
+      }, 400);
       document.body.style.overflow = "auto";
+      
     }
   }
 
@@ -102,7 +107,8 @@ function NavBar(appProps) {
   return (
     <div className="nav-content">
       <Link to={"/"} className="nav-links nav-bar-logo-link">
-      <GenshinLogo className="nav-bar-logo" /><span className="nav-bar-logo-text">FAN SHOP!</span>
+        <GenshinLogo className="nav-bar-logo" />
+        <span className="nav-bar-logo-text">FAN SHOP!</span>
       </Link>
       <Link to={"/"} className="nav-links">
         <div>HOME</div>
@@ -138,30 +144,37 @@ function NavBar(appProps) {
               </div>
             </div>
 
-            <span className="close-shopping-cart" onClick={displayCart}>
-              Close
-            </span>
+            <button className="close-shopping-cart" onClick={displayCart}>
+              CLOSE
+            </button>
           </div>
           <div className="shopping-cart-article-list">
             {appProps.props.cart.length >= 1 ? (
               appProps.props.cart.map((item) => (
-                <div className="shopping-cart-item" key={(item.id+item.size+item.color)}>
+                <div
+                  className="shopping-cart-item"
+                  key={item.id + item.size + item.color}
+                >
                   <div className="shopping-cart-image-container">
-                    {item.productInfo ? item.productInfo.map(info => (
-                      item.color === info.color ?
+                    {item.productInfo ? (
+                      item.productInfo.map((info) =>
+                        item.color === info.color ? (
+                          <img
+                            className="shopping-cart-img"
+                            src={"/shopping-cart-OdinProject/" + info.image}
+                            alt={item.productName + info.color}
+                            key={info.image + info.color}
+                          />
+                        ) : null
+                      )
+                    ) : (
                       <img
                         className="shopping-cart-img"
-                        src={"/shopping-cart-OdinProject/" + info.image}
-                        alt={item.productName + info.color}
-                        key={info.image + info.color}
+                        src={item.location}
+                        alt={item.productName}
+                        key={item.image + item.productName}
                       />
-                      : null
-                    )) : <img
-                    className="shopping-cart-img"
-                    src={item.location}
-                    alt={item.productName}
-                    key={item.image + item.productName}
-                  />}
+                    )}
                   </div>
                   <div className="shopping-cart-product-info-container">
                     <div className="shopping-cart-product-info">
@@ -174,7 +187,12 @@ function NavBar(appProps) {
                         <div className="nav-bar-product-details-selections-titles">
                           Color
                         </div>
-                        <select name="nav-bar-product-color" className="nav-bar-product-color" defaultValue={item.color} disabled={true}>
+                        <select
+                          name="nav-bar-product-color"
+                          className="nav-bar-product-color"
+                          defaultValue={item.color}
+                          disabled={true}
+                        >
                           <option value="white">⚪ White</option>
                           <option value="black">⚫ Black</option>
                           <option value="blue">🔵 Blue</option>
@@ -185,7 +203,12 @@ function NavBar(appProps) {
                         <div className="nav-bar-product-details-selections-titles">
                           Size
                         </div>
-                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size} disabled={true}>
+                        <select
+                          name="nav-bar-product-size"
+                          className="nav-bar-product-size"
+                          defaultValue={item.size}
+                          disabled={true}
+                        >
                           <option value="xs">XS</option>
                           <option value="s">S</option>
                           <option value="m">M</option>
@@ -193,12 +216,18 @@ function NavBar(appProps) {
                           <option value="xl">XL</option>
                         </select>
                       </div>
-                    ) : item.productType === "Poster" || item.productType === "Mouse Pad" ? (
+                    ) : item.productType === "Poster" ||
+                      item.productType === "Mouse Pad" ? (
                       <div className="nav-bar-product-details-selections">
                         <div className="nav-bar-product-details-selections-titles">
                           Size
                         </div>
-                        <select name="nav-bar-product-size" className="nav-bar-product-size" defaultValue={item.size} disabled={true}>
+                        <select
+                          name="nav-bar-product-size"
+                          className="nav-bar-product-size"
+                          defaultValue={item.size}
+                          disabled={true}
+                        >
                           <option value="s">Small</option>
                           <option value="m">Medium</option>
                           <option value="l">Large</option>
@@ -232,15 +261,15 @@ function NavBar(appProps) {
                       {(item.price * item.amount).toFixed(2)}{" "}
                       <span className="shopping-cart-dollar-sign"> $</span>
                     </div>
-                    <div
+                    <button
                       className="shopping-cart-remove-product"
                       product_id={item.id}
                       size_value={item.size}
                       color_value={item.color}
                       onClick={removeItemFromCart}
                     >
-                      Remove Item
-                    </div>
+                      REMOVE ITEM
+                    </button>
                   </div>
                 </div>
               ))
@@ -264,9 +293,9 @@ function NavBar(appProps) {
                 onClick={displayCart}
                 className="proceed-to-checkout-nav-link"
               >
-                <div className="shopping-cart-proceed-to-checkout">
-                  Proceed to Checkout
-                </div>
+                <button className="shopping-cart-proceed-to-checkout">
+                  PROCEED TO CHECKOUT
+                </button>
               </Link>
             </div>
           ) : (

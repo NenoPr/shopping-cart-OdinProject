@@ -3,6 +3,7 @@
   grid-template: auto / 3fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: space-around;
   align-items: center;
+  justify-items: left;
   height: 100%;
   width: 100%;
 }
@@ -150,6 +151,7 @@
     top: 3.2%;
     left: 70%;
     width: 20%; */
+  font-size: 2rem;
   cursor: pointer;
   color: black;
   border: 0.2rem solid var(--accent-color-1);
@@ -316,11 +318,23 @@
   width: fit-content;
   align-self: center;
   background-color: var(--main-bg-color-2);
-  color: black;
   color: var(--main-bg-color-1);
+  border: .1rem solid var(--main-bg-color-2);
   border-radius: 0.5rem;
   cursor: pointer;
   align-self: center;
+}
+
+.shopping-cart-remove-product:hover {
+  background-color: var(--main-bg-color-1);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-2);
+}
+
+.shopping-cart-remove-product:focus {
+  background-color: var(--main-bg-color-1);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-1);
 }
 
 .shopping-cart-lower-container {
@@ -359,7 +373,7 @@
 .proceed-to-checkout-nav-link {
   text-decoration: none;
   color: var(--main-bg-color-1);
-  width: fit-content;
+  width: 80%;
 }
 
 .proceed-to-checkout-nav-link:hover {
@@ -367,12 +381,70 @@
 }
 
 .shopping-cart-proceed-to-checkout {
-  padding: 1rem;
+  padding: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
   background-color: var(--accent-color-1);
+  border: .2rem solid var(--main-bg-color-1);
+  color: var(--main-bg-color-1);
   border-radius: 1rem;
   font-weight: 700;
   cursor: pointer;
   width: fit-content;
   text-align: center;
   margin-bottom: 3rem;
+  width: 100%;
+  height: 100%;
 }
+
+.shopping-cart-proceed-to-checkout:hover {
+  background-color: var(--accent-color-2);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-1);
+}
+
+.shopping-cart-proceed-to-checkout:active {
+  background-color: var(--accent-color-2);
+  color: var(--main-bg-color-2);
+  border-color: var(--accent-color-2);
+}
+
+/* ---- Animations ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .shopping-cart-container {
+    animation: Shopping-cart-render 1 .5s;
+    animation-iteration-count: 1;
+    position: relative;
+  }
+}
+
+@keyframes Shopping-cart-render {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shopping-cart-container-close-animation {
+    animation: Toggle-cart-display-off 1 .5s;
+    animation-iteration-count: 1;
+    position: relative;
+  }
+}
+
+@keyframes Toggle-cart-display-off {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+
+  }
+}
+
+

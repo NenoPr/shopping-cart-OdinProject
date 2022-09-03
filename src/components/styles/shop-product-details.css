@@ -185,6 +185,7 @@ span {
 
 .product-add-to-cart {
   padding: 1rem;
+  font-size: 1.5rem;
   background-color: var(--main-bg-color-1);
   border-radius: 0.5rem;
   border: 0.2rem solid var(--main-bg-color-2);
@@ -192,14 +193,40 @@ span {
   color: var(--main-bg-color-2);
 }
 
+.product-add-to-cart:hover {
+  border-color: var(--main-bg-color-2);
+  color: var(--main-bg-color-1);
+  background-color: var(--accent-color-1);
+}
+
+.product-add-to-cart:active {
+  border-color: var(--accent-color-1);
+  color: var(--main-bg-color-1);
+  background-color: var(--accent-color-1);
+}
+
+.product-proceed-to-checkout-Link {
+  text-decoration: none;
+}
+
 .product-proceed-to-checkout {
   padding: 1rem;
+  font-size: 1.5rem;
   background-color: var(--main-bg-color-2);
   border-radius: 0.5rem;
   border: 0.2rem solid var(--main-bg-color-2);
   cursor: pointer;
   color: var(--main-bg-color-1);
-  text-decoration: none;
+}
+
+.product-proceed-to-checkout:hover {
+  background-color: var(--accent-color-3);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-2);
+}
+
+.product-proceed-to-checkout:active {
+  border-color: var(--accent-color-3);
 }
 
 .product-summary-container {

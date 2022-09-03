@@ -51,6 +51,7 @@
   align-items: center;
   border-bottom: .2rem solid var(--main-bg-color-2);
   padding-bottom: 1rem;
+  min-height: 55vh;
 }
 
 .checkout-payment-method-container {
@@ -277,16 +278,29 @@ select {
 }
 
 .checkout-remove-product {
+  align-self: center;
   font-size: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   width: fit-content;
   align-self: center;
   background-color: var(--main-bg-color-2);
-  color: black;
+  border: .1rem solid var(--main-bg-color-2);
   color: var(--main-bg-color-1);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   align-self: center;
+}
+
+.checkout-remove-product:hover {
+  background-color: var(--main-bg-color-1);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-2);
+}
+
+.checkout-remove-product:focus {
+  background-color: var(--main-bg-color-1);
+  color: var(--main-bg-color-2);
+  border-color: var(--main-bg-color-1);
 }
 
 .checkout-lower-container {
@@ -344,22 +358,34 @@ select {
 
 .checkout-complete-purchase {
   margin-top: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--main-bg-color-1);
+  border: .2rem solid var(--main-bg-color-2);
   background-color: var(--accent-color-2);
   border-radius: 1rem;
   margin-bottom: 3rem;
   cursor: pointer;
+  width: 30%;
 }
 
 .checkout-complete-purchase:hover {
+  background-color: var(--accent-color-2);
   color: var(--main-bg-color-2);
+  border: .2rem solid var(--main-bg-color-1);
+}
+
+.checkout-complete-purchase:active {
+  background-color: var(--accent-color-1);
+  color: var(--main-bg-color-1);
+  border: .2rem solid var(--main-bg-color-1);
 }
 
 .checkout-link {
     text-decoration: none;
+    width: 70%;
 }
 
 .checkout-link:hover {
@@ -367,9 +393,66 @@ select {
 }
 
 .checkout-no-items {
+  grid-area: 1 / 1 / 3 / 3;
   color: var(--main-bg-color-2);
   font-size: 2rem;
   font-weight: 700;
   border-bottom: .2rem solid var(--main-bg-color-2);
   margin-bottom: 3rem;
 }
+
+
+/* ---- Animations ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .checkout-credit-cards-container {
+    animation: Payment-animation 1 .5s;
+    animation-iteration-count: 1;
+    position: relative;
+  }
+}
+@keyframes Payment-animation {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .paypal-logo {
+    animation: Payment-credit-animation 1 .5s;
+    animation-iteration-count: 1;
+    position: relative;
+  }
+}
+
+@keyframes Payment-credit-animation {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .crypto-payment {
+    animation: Payment-crypto-animation 1 .5s;
+    animation-iteration-count: 1;
+    position: relative;
+  }
+}
+
+@keyframes Payment-crypto-animation {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+

@@ -447,7 +447,7 @@ const AllProducts = {
         {
           name: "Hu Tao",
           stars: "⭐⭐⭐⭐⭐",
-          text: "Thanks. This'll bury quietly!",
+          text: "Thanks. This'll bury quietly! 😊",
         },
         {
           name: "Dr. Baizhu",

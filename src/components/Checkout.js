@@ -259,7 +259,7 @@ const Checkout = (appProps) => {
   return (
     <div className="checkout-container">
       <div className="checkout-header-container">
-        <div className="checkout-header">Checkout</div>
+        <div className="checkout-header">CHECKOUT</div>
       </div>
       <div className="checkout-articles-container">
         <div className="checkout-article-list">
@@ -294,7 +294,7 @@ const Checkout = (appProps) => {
               </div>
             </div>
           ) : (
-            ""
+            <div className="checkout-no-items">No Items added to cart.</div>
           )}
           <div className="checkout-articles">
             {
@@ -408,15 +408,15 @@ const Checkout = (appProps) => {
                       {(item.price * item.amount).toFixed(2)}{" "}
                       <span className="checkout-dollar-sign">$</span>
                     </div>
-                    <div
+                    <button
                       className="checkout-remove-product"
                       product_id={item.id}
                       size_checkout={item.size}
                       color_checkout={item.color}
                       onClick={removeItemFromCart}
                     >
-                      Remove Item
-                    </div>
+                      REMOVE ITEM
+                    </button>
                   </div>
                 </div>
               ))
@@ -449,13 +449,13 @@ const Checkout = (appProps) => {
               </div>
             </div>
           </div>
-        ) : (
-          <div className="checkout-no-items">No Items added to cart.</div>
-        )}
+        ) : null}
       </div>
       {appProps.props.cart.length >= 1 ? (
         <Link to={"/purchase-completed"} className="checkout-link">
-          <div className="checkout-complete-purchase">Complete Purchase</div>
+          <button className="checkout-complete-purchase">
+            COMPLETE PURCHASE
+          </button>
         </Link>
       ) : (
         <div></div>

@@ -30,7 +30,9 @@ const Home = () => {
         <h2>Featured Goods</h2>
         <div className="home-para-featured-goods-text">
           These goodies are{" "}
-          <span style={{ color: "red", fontWeight: "700", fontSize: "1.75rem" }}>
+          <span
+            style={{ color: "red", fontWeight: "700", fontSize: "1.75rem" }}
+          >
             HOT
           </span>{" "}
           now! Get them while we still have them!
@@ -233,23 +235,17 @@ const Home = () => {
                   className="home-reviews-image"
                 />
               </Link>
-              <div className="home-reviews-info">
-                {item.reviews.map((review) =>
-                  review.name === "Qi Qi" ? (
-                    <div key={uniqid()}>
-                      <div className="home-reviews-item-name">
-                        {review.name}
-                      </div>
-                      <div className="home-reviews-item-stars">
-                        {review.stars}
-                      </div>
-                      <div className="home-reviews-item-text">
-                        {review.text}
-                      </div>
+              {item.reviews.map((review) =>
+                review.name === "Qi Qi" ? (
+                  <div className="home-reviews-info">
+                    <div className="home-reviews-item-name">{review.name}</div>
+                    <div className="home-reviews-item-stars">
+                      {review.stars}
                     </div>
-                  ) : null
-                )}
-              </div>
+                    <div className="home-reviews-item-text">{review.text}</div>
+                  </div>
+                ) : null
+              )}
             </div>
           ) : null
         )}
@@ -274,23 +270,17 @@ const Home = () => {
                   className="home-reviews-image"
                 />
               </Link>
-              <div className="home-reviews-info">
-                {item.reviews.map((review) =>
-                  review.name === "Not Emergency Food!!" ? (
-                    <div key={uniqid()}>
-                      <div className="home-reviews-item-name">
-                        {review.name}
-                      </div>
-                      <div className="home-reviews-item-stars">
-                        {review.stars}
-                      </div>
-                      <div className="home-reviews-item-text">
-                        {review.text}
-                      </div>
+              {item.reviews.map((review) =>
+                review.name === "Not Emergency Food!!" ? (
+                  <div className="home-reviews-info" key={uniqid()}>
+                    <div className="home-reviews-item-name">{review.name}</div>
+                    <div className="home-reviews-item-stars">
+                      {review.stars}
                     </div>
-                  ) : null
-                )}
-              </div>
+                    <div className="home-reviews-item-text">{review.text}</div>
+                  </div>
+                ) : null
+              )}
             </div>
           ) : null
         )}
@@ -315,23 +305,17 @@ const Home = () => {
                   className="home-reviews-image"
                 />
               </Link>
-              <div className="home-reviews-info">
-                {item.reviews.map((review) =>
-                  review.name === "Hu Tao" ? (
-                    <div key={uniqid()}>
-                      <div className="home-reviews-item-name">
-                        {review.name}
-                      </div>
-                      <div className="home-reviews-item-stars">
-                        {review.stars}
-                      </div>
-                      <div className="home-reviews-item-text">
-                        {review.text}
-                      </div>
+              {item.reviews.map((review) =>
+                review.name === "Hu Tao" ? (
+                  <div className="home-reviews-info" key={uniqid()}>
+                    <div className="home-reviews-item-name">{review.name}</div>
+                    <div className="home-reviews-item-stars">
+                      {review.stars}
                     </div>
-                  ) : null
-                )}
-              </div>
+                    <div className="home-reviews-item-text">{review.text}</div>
+                  </div>
+                ) : null
+              )}
             </div>
           ) : null
         )}

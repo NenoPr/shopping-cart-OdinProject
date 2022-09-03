@@ -102,6 +102,16 @@ h3 {
   cursor: pointer;
 }
 
+.home-header-info-button:hover {
+  background-color: var(--main-bg-color-1);
+  border-color: var(--main-bg-color-2);
+  color: var(--main-bg-color-2);
+}
+
+.home-header-info-button:active {
+  border-color: var(--main-bg-color-1);
+}
+
 .home-featured-goods {
   display: flex;
   flex-direction: column;
@@ -219,8 +229,10 @@ h3 {
   display: grid;
   grid-template: auto 1fr / 1fr 1fr;
   column-gap: 2rem;
-  row-gap: 0.5rem;
+  row-gap: 1.5rem;
   padding: 2rem;
+  padding-top: 1rem;
+  padding-bottom: .1rem;
   border: 0.2rem solid var(--main-bg-color-2);
   border-radius: 1rem;
 }

@@ -88,6 +88,20 @@ const ShopProductDetails = (appProps) => {
       });
       appProps.props.setCart(newState);
       console.log("Current Cart", appProps.props.cart);
+      document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-on");
+          document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-off");
+      setTimeout(() => {
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-on");
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-off");
+      }, 3000);
       return;
       // if it is not present add it to the cart object
     } else {
@@ -122,6 +136,20 @@ const ShopProductDetails = (appProps) => {
       // Push newState to cart
       appProps.props.setCart(newState);
       console.log("Current Cart", appProps.props.cart);
+      document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-on");
+          document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-off");
+      setTimeout(() => {
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-on");
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-off");
+      }, 3000);
     }
   }
 
@@ -332,11 +360,11 @@ const ShopProductDetails = (appProps) => {
               ) : null}
             </div>
             <div className="product-cart-container">
-              <div className="product-add-to-cart" onClick={handleAddToCart}>
+              <button className="product-add-to-cart" onClick={handleAddToCart}>
                 ADD TO CART
-              </div>
-              <Link to={"/checkout"} className="product-proceed-to-checkout">
-                <div onClick={handleAddToCart}>BUY NOW</div>
+              </button>
+              <Link to={"/checkout"} className="product-proceed-to-checkout-Link">
+                <button className="product-proceed-to-checkout" onClick={handleAddToCart}>BUY NOW</button>
               </Link>
             </div>
             <div className="product-summary-container">

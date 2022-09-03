@@ -60,6 +60,20 @@ const Shop = (appProps) => {
       });
       appProps.items.setCart(newState);
       console.log("Current Cart", appProps.items.cart);
+      document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-on");
+          document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-off");
+      setTimeout(() => {
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-on");
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-off");
+      }, 3000);
       return;
       // if it is not present add it to the cart object
     } else {
@@ -88,6 +102,20 @@ const Shop = (appProps) => {
       });
       appProps.items.setCart(newState);
       console.log("Current Cart", appProps.items.cart);
+      document
+        .getElementById("confirm-add-to-cart-popup")
+        .classList.add("add-to-cart-popup-on");
+        document
+        .getElementById("confirm-add-to-cart-popup")
+        .classList.remove("add-to-cart-popup-off");
+      setTimeout(() => {
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.remove("add-to-cart-popup-on");
+        document
+          .getElementById("confirm-add-to-cart-popup")
+          .classList.add("add-to-cart-popup-off");
+      }, 3000);
     }
   }
 
@@ -109,7 +137,7 @@ const Shop = (appProps) => {
         )}
       </div>
       <div className="shop-header-title-container">
-        <h2 className="shop-header-title" >SHOP</h2>
+        <h2 className="shop-header-title">SHOP</h2>
         <div className="shop-header-category">
           {categories === undefined
             ? "All Items"
@@ -204,22 +232,23 @@ const Shop = (appProps) => {
                     {article.productPrice}{" "}
                     <span className="shop-product-price-dollar">$</span>
                   </div>
-                  <div
+                  <button
                     className="add-to-cart"
                     onClick={addToCart}
                     id={article.id}
                     name={article.productName}
                   >
-                    Add to Cart
-                  </div>
-                  <Link to={"/checkout"} className="shop-buy-now">
-                    <div
+                    ADD TO CART
+                  </button>
+                  <Link to={"/checkout"}>
+                    <button
+                      className="shop-buy-now"
                       onClick={addToCart}
                       id={article.id}
                       name={article.productName}
                     >
-                      Buy Now
-                    </div>
+                      BUY NOW
+                    </button>
                   </Link>
                 </div>
               ))
@@ -251,22 +280,23 @@ const Shop = (appProps) => {
                       {article.productPrice}{" "}
                       <span className="shop-product-price-dollar">$</span>
                     </div>
-                    <div
+                    <button
                       className="add-to-cart"
                       onClick={addToCart}
                       id={article.id}
                       name={article.productName}
                     >
-                      Add to Cart
-                    </div>
-                    <Link to={"/checkout"} className="shop-buy-now">
-                      <div
+                      ADD TO CART
+                    </button>
+                    <Link to={"/checkout"}>
+                      <button
+                        className="shop-buy-now"
                         onClick={addToCart}
                         id={article.id}
                         name={article.productName}
                       >
-                        Buy Now
-                      </div>
+                        BUY NOW
+                      </button>
                     </Link>
                   </div>
                 ))

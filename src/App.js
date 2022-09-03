@@ -34,6 +34,7 @@ const App = () => {
           </Routes>
         </div>
         <footer className="app-footer"><Footer /></footer>
+        <div id="confirm-add-to-cart-popup" className="add-to-cart-popup-off">Item added to Cart.</div>
       </div>
     </HashRouter>
   );
