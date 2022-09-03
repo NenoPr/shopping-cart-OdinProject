@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/shopping-cart-OdinProject/static/css/main.6e52a414.css",
+    "main.css": "/shopping-cart-OdinProject/static/css/main.6f04636b.css",
     "main.js": "/shopping-cart-OdinProject/static/js/main.5785f8ae.js",
     "static/js/787.d6fe38e8.chunk.js": "/shopping-cart-OdinProject/static/js/787.d6fe38e8.chunk.js",
     "static/media/zh-cn.ttf": "/shopping-cart-OdinProject/static/media/zh-cn.54a8212866e6ec1b1003.ttf",
@@ -11,12 +11,12 @@
     "static/media/paypal-logo.svg": "/shopping-cart-OdinProject/static/media/paypal-logo.48e007fa057ea0032890449ffb160cd5.svg",
     "index.html": "/shopping-cart-OdinProject/index.html",
     "static/media/shopping_cart.svg": "/shopping-cart-OdinProject/static/media/shopping_cart.d37d9447205ed76e3ffc587bc6d88dd8.svg",
-    "main.6e52a414.css.map": "/shopping-cart-OdinProject/static/css/main.6e52a414.css.map",
+    "main.6f04636b.css.map": "/shopping-cart-OdinProject/static/css/main.6f04636b.css.map",
     "main.5785f8ae.js.map": "/shopping-cart-OdinProject/static/js/main.5785f8ae.js.map",
     "787.d6fe38e8.chunk.js.map": "/shopping-cart-OdinProject/static/js/787.d6fe38e8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e52a414.css",
+    "static/css/main.6f04636b.css",
     "static/js/main.5785f8ae.js"
   ]
 }
