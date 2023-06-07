@@ -174,7 +174,7 @@ const Home = () => {
             <Link to={"/shop/figures"} className="home-categories-Links">
               <div>Figures</div>
               <img
-                src="/shopping-cart-OdinProject/images/figures/klee_figure_img1.jpg"
+                src="/shopping-cart-OdinProject/images/figures/venti_figure_img1.jpg"
                 alt=""
                 className="home-shop-categories-item-image"
               />

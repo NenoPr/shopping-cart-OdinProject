@@ -562,16 +562,15 @@ const AllProducts = {
 
     {
       productType: "Figure",
-      productName: "Mona's Ability",
+      productName: "Venti's Harp",
       productPrice: 69.99,
-      productLocationUrl: "images/figures/mona_figure_img1.jpg",
+      productLocationUrl: "images/figures/venti_figure_img1.jpg",
       id: uniqid(),
       productImages: [
-        "images/figures/mona_figure_img1.jpg",
-        "images/figures/mona_figure_img2.jpg",
-        "images/figures/mona_figure_img3.jpg",
-        "images/figures/mona_figure_img4.jpg",
-        "images/figures/mona_figure_img5.jpg",
+        "images/figures/venti_figure_img1.jpg",
+        "images/figures/venti_figure_img2.jpg",
+        "images/figures/venti_figure_img3.jpg",
+        "images/figures/venti_figure_img4.jpg",
       ],
       reviews: [
         {
@@ -745,25 +744,6 @@ const AllProducts = {
           name: "Yae Miko",
           stars: "⭐⭐⭐⭐⭐",
           text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-        },
-      ],
-    },
-    {
-      productType: "Mouse Pad",
-      productName: "Yae Miko Mouse Pad",
-      productPrice: 29.49,
-      productLocationUrl: "images/mousepads/yae_mousepad.jpg",
-      id: uniqid(),
-      reviews: [
-        {
-          name: "Raiden",
-          stars: "⭐⭐⭐⭐⭐",
-          text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-        },
-        {
-          name: "Aether",
-          stars: "⭐⭐⭐⭐⭐",
-          text: "Fuga dolore quas atque nemo minima earum maxime. Deleniti, repellat?",
         },
       ],
     },
