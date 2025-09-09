@@ -17,4 +17,4 @@ A webshop based around a popular game Genshin Impact. It was bulit as a learning
 </div>
 
 ## 🔗 Live Demo
-[Demo Link]([https://yourproject.vercel.app](https://nenopr.github.io/shopping-cart-OdinProject/))
+[Demo Link](https://nenopr.github.io/shopping-cart-OdinProject/)
