@@ -1,5 +1,20 @@
-# Shopping Cart Project
+## 📌 Overview
+A webshop based around a popular game Genshin Impact. It was bulit as a learning project to improve skills with the React framework.
 
-A website that uses a shopping cart functionality. 
+## 🛠️ Tech Stack
+- Frontend: React
 
-Website Link: https://nenopr.github.io/shopping-cart-OdinProject/
+## 🚀 Features
+- Add/remove/edit items in cart
+- Responsive design
+- Features multiple products with various sizes, colors etc
+
+## 📸 Screenshots
+
+<div style="display: flex; flex-direction: column; align-content: center; align-items: center">
+	<img src="./public/img/thumbs/shopping-cart-1.png">
+	<img src="./public/img/thumbs/shopping-cart-3.png">
+</div>
+
+## 🔗 Live Demo
+[Demo Link]([https://yourproject.vercel.app](https://nenopr.github.io/shopping-cart-OdinProject/))
